@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="UTF-8" />
+    <title>Previsões</title>
+    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"
+          rel="stylesheet" />
+    <link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}"
+          rel="stylesheet" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+<body>
+
+<table class="table">
+    <thead>
+    <tr>
+        <center>
+            <th style="text-align: center;">Previsão do tempo da Cidade de São Paulo <h9>*Dados captados entre os dias 03/03 À 06/03</h9>
+
+            </th>
+        </center>
+    </tr>
+    </thead>
+</table>
+
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Dia na semana</th>
+        <th>Temperatura mínima</th>
+        <th>Temperatura máxima</th>
+        <th>Humidade relativa do ar</th>
+        <th>Descrição</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="periodos : ${periodos}">
+        <td th:text="${periodos.diaNaSemana}"></td>
+        <td th:text="${periodos.temperaturaMin}+'°C'"></td>
+        <td th:text="${periodos.temperaturaMax}+'°C'"></td>
+        <td th:text="${periodos.humidadeAr}+'%'"></td>
+        <td th:text="${periodos.descricao}"></td>
+    </tr>
+
+    </tbody>
+</table>
+
+<form id ="vida" class="form-inline" method="POST" th:object="${previsao}"
+      th:action="@{/periodos}" style="margin-left: 106px;">
+
+    <div class="form-group">
+        <input type="text" class="form-control" placeholder="DiaNaSemana"
+               th:field="*{diaNaSemana}"/>
+        <input type="text" class="form-control" placeholder="TemperaturaMin"
+               th:field="*{temperaturaMin}"/>
+        <input type="text" class="form-control" placeholder="TemperaturaMax"
+               th:field="*{temperaturaMax}"/>
+        <input type="text" class="form-control" placeholder="HumidadeAr"
+               th:field="*{humidadeAr}"/>
+        <input type="text" class="form-control" placeholder="Descricao"
+               th:field="*{descricao}"/>
+        <button type="submit" class="btn btn-primary">Adicionar</button>
+    </div>
+</form>
+
+</body>
+
+</html>

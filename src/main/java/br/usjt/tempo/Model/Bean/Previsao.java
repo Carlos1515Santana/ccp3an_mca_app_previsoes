@@ -19,6 +19,7 @@ public class Previsao {
     private Double temperaturaMax;
     private Double humidadeAr;
     private String descricao;
+    private String ygug;
 
 
     public Long getId() {

@@ -15,6 +15,8 @@ public class Usuario {
     private String senha;
     private String vida;
 
+    //Comentário teste de version controle
+
     public String getLogin() {
         return login;
     }

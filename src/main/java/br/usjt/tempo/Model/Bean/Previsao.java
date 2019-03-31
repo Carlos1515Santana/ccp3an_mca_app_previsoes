@@ -1,17 +1,20 @@
 package br.usjt.tempo.Model.Bean;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.io.Serializable;
+import java.util.Date;
 
 @Entity
-public class Previsao {
+@Table(name= "Previsao")
+public class Previsao implements Serializable {
 
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @NotNull
+    @Column(name = "Id")
     private Long id;
 
     private String diaNaSemana;
@@ -19,7 +22,21 @@ public class Previsao {
     private Double temperaturaMax;
     private Double humidadeAr;
     private String descricao;
-    private String ygug;
+
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_dia")
+    private DiaSemana diaSemana;
+
+    @Column(nullable = true)
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dataHora;
+
+    @Column(nullable = true)
+    private String latitude;
+
+    @Column(nullable = true)
+    private String longitude;
 
 
     public Long getId() {

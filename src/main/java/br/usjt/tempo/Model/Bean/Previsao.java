@@ -38,6 +38,48 @@ public class Previsao implements Serializable {
     @Column(nullable = true)
     private String longitude;
 
+    @OneToMany
+    private Cidade cidade;
+
+    public DiaSemana getDiaSemana() {
+        return diaSemana;
+    }
+
+    public Date getDataHora() {
+        return dataHora;
+    }
+
+    public void setDataHora(Date dataHora) {
+        this.dataHora = dataHora;
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
+    }
+
+    public Cidade getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(Cidade cidade) {
+        this.cidade = cidade;
+    }
+
+    public void setDiaSemana(DiaSemana diaSemana) {
+        this.diaSemana = diaSemana;
+    }
 
     public Long getId() {
         return id;
